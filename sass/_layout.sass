@@ -1,0 +1,38 @@
+@import helper
+
+$navbar-height: 42px
+$side-menu-width: 140px
+$whiteboard-height: 84vh
+$whiteboard-width: 88vw
+
+html, body
+	height: 100%
+
+.wrapper
+	@extend .flex-column
+	height: 100%
+
+.main-body
+	height: 100%
+
+.side-menu
+	padding-top: 12px
+	width: $side-menu-width
+
+#editor, .firepad, .CodeMirror
+	flex: 1
+	height: calc(100vh - #{$navbar-height})
+
+// =================================
+
+.whiteboard
+	width: $whiteboard-width
+	height: $whiteboard-height
+
+.whiteboard-wrapper
+	@extend .whiteboard
+	display: none
+	position: absolute
+	top: (100 - $whiteboard-height) / 2
+	left: (100 - $whiteboard-width) / 2
+	z-index: 9999
