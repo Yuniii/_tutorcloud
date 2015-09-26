@@ -1,7 +1,12 @@
 @import helper
 
 $navbar-height: 42px
+
 $side-menu-width: 140px
+
+$chatroom-width: 280px
+$chat-input-height: 60px
+
 $whiteboard-height: 84vh
 $whiteboard-width: 88vw
 
@@ -15,15 +20,32 @@ html, body
 .main-body
 	height: 100%
 
+// =========================
+
 .side-menu
 	padding-top: 12px
 	width: $side-menu-width
 
-#editor, .firepad, .CodeMirror
+.editor, .firepad, .CodeMirror
 	flex: 1
 	height: calc(100vh - #{$navbar-height})
 
-// =================================
+// ==========================
+
+.chatroom
+	@extend .flex-column
+	width: $chatroom-width
+
+.chat-items
+	flex: 1
+
+.chat-input
+	box-sizing: border-box
+	width: 100%
+	height: $chat-input-height
+	padding: 0
+
+// ==========================
 
 .whiteboard
 	width: $whiteboard-width
