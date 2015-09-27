@@ -1,8 +1,8 @@
-System.register(['codemirror.js', 'ui.js', 'firepad.js'], function (_export) {
+System.register(['ui.js', 'firepad.js', 'user.js'], function (_export) {
   'use strict';
 
   return {
-    setters: [function (_codemirrorJs) {}, function (_uiJs) {}, function (_firepadJs) {}],
+    setters: [function (_uiJs) {}, function (_firepadJs) {}, function (_userJs) {}],
     execute: function () {}
   };
 });

@@ -1,14 +1,16 @@
-System.register(['codemirror.js'], function (_export) {
+System.register(['firebase.js', 'codemirror.js'], function (_export) {
   'use strict';
 
-  var codeMirror;
+  var firebaseURL, codeMirror;
   return {
-    setters: [function (_codemirrorJs) {
+    setters: [function (_firebaseJs) {
+      firebaseURL = _firebaseJs.firebaseURL;
+    }, function (_codemirrorJs) {
       codeMirror = _codemirrorJs.codeMirror;
     }],
     execute: function () {
 
-      Firepad.fromCodeMirror(new Firebase('https://teamcloud.firebaseio.com/room1/codepad'), codeMirror);
+      Firepad.fromCodeMirror(new Firebase(firebaseURL + 'room1/codepad'), codeMirror);
     }
   };
 });
