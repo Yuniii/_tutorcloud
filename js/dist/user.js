@@ -1,28 +1,28 @@
-System.register(['firebase.js', 'functions.js'], function (_export) {
+System.register(['firebase.js'], function (_export) {
 	'use strict';
 
-	var firebaseURL, randomString, userName;
+	var firebaseURL, userName;
 
-	function setupUser() {
-		var ref = new Firebase(firebaseURL + 'room1/users');
+	function setupFirebaseUser() {
+		var ref = new Firebase(firebaseURL + 'users');
 		ref.child(sessionStorage.getItem('user_name')).set(true);
 	}
+
 	return {
 		setters: [function (_firebaseJs) {
 			firebaseURL = _firebaseJs.firebaseURL;
-		}, function (_functionsJs) {
-			randomString = _functionsJs.randomString;
 		}],
 		execute: function () {
-			userName = sessionStorage.getItem('user_name');
 
-			if (userName === null) {
+			if (sessionStorage.getItem('user_name') === null) {
 				UIkit.modal.prompt("輸入姓名：", userName, function (value) {
-					userName = value;
+					_export('userName', userName = value);
 					sessionStorage.setItem('user_name', userName);
-					setupUser();
+					setupFirebaseUser();
 				}, { labels: { Ok: "確認", Cancel: "離開" } });
-			}
+			}userName = sessionStorage.getItem('user_name');
+
+			_export('userName', userName);
 		}
 	};
 });

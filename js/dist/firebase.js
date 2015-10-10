@@ -5,7 +5,7 @@ System.register([], function (_export) {
   return {
     setters: [],
     execute: function () {
-      firebaseURL = 'https://teamcloud.firebaseio.com/';
+      firebaseURL = 'https://teamcloud.firebaseio.com/room1/';
 
       _export('firebaseURL', firebaseURL);
     }

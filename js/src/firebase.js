@@ -1,1 +1,1 @@
-export var firebaseURL = 'https://teamcloud.firebaseio.com/';
+export var firebaseURL = 'https://teamcloud.firebaseio.com/room1/';

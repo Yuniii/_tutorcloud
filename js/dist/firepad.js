@@ -10,7 +10,7 @@ System.register(['firebase.js', 'codemirror.js'], function (_export) {
     }],
     execute: function () {
 
-      Firepad.fromCodeMirror(new Firebase(firebaseURL + 'room1/codepad'), codeMirror);
+      Firepad.fromCodeMirror(new Firebase(firebaseURL + 'codepad'), codeMirror);
     }
   };
 });
