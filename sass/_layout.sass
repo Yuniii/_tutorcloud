@@ -1,10 +1,11 @@
 @import helper
 
 $navbar-height: 42px
+$navbar-width: 80vw
 
 $side-menu-width: 140px
 
-$chatroom-width: 280px
+$chatroom-width: 320px
 $chat-input-height: 60px
 
 $whiteboard-height: 84vh
@@ -13,12 +14,18 @@ $whiteboard-width: 88vw
 html, body
 	height: 100%
 
+div
+	box-sizing: border-box
+
 .wrapper
 	@extend .flex-column
 	height: 100%
 
 .main-body
 	height: 100%
+
+.navbar
+	width: $navbar-width
 
 // =========================
 
@@ -35,9 +42,11 @@ html, body
 .chatroom
 	@extend .flex-column
 	width: $chatroom-width
+	height: calc(100vh - #{$navbar-height})
 
 .chat-items
 	flex: 1
+	overflow-y: scroll
 
 .chat-input
 	box-sizing: border-box

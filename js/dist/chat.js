@@ -1,9 +1,9 @@
-System.register(['firebase.js', 'user.js'], function (_export) {
+System.register(['firebase.js', 'user.js', 'functions.js'], function (_export) {
 	'use strict';
 
-	var firebaseURL, userName, ref;
+	var firebaseURL, userName, escapeHTML, nl2br, tab2spaces, ref;
 
-	function loadHistory() {
+	function setupChat() {
 		ref.limitToLast(20).on('child_added', function (data) {
 			var entry = data.val();
 			appendEntry(entry);
@@ -11,7 +11,10 @@ System.register(['firebase.js', 'user.js'], function (_export) {
 	}
 
 	function appendEntry(entry) {
-		var entryHtml = '<div class="chat-entry"><span class="chat-user">' + entry.user + '</span>: <span class="chat-content">' + entry.content + '</span></div>';
+		var user = escapeHTML(entry.user),
+		    content = tab2spaces(nl2br(escapeHTML(entry.content))),
+		    entryHtml = '<div class="chat-entry"><span class="chat-user">' + user + '</span>: <span class="chat-content">' + content + '</span></div>';
+
 		$('#chatItems').append(entryHtml);
 	}
 	return {
@@ -19,19 +22,28 @@ System.register(['firebase.js', 'user.js'], function (_export) {
 			firebaseURL = _firebaseJs.firebaseURL;
 		}, function (_userJs) {
 			userName = _userJs.userName;
+		}, function (_functionsJs) {
+			escapeHTML = _functionsJs.escapeHTML;
+			nl2br = _functionsJs.nl2br;
+			tab2spaces = _functionsJs.tab2spaces;
 		}],
 		execute: function () {
 			ref = new Firebase(firebaseURL + 'chat');
 
-			loadHistory();
+			setupChat();
 
 			$('#chatInput').keydown(function (e) {
-				var content = $(this).val();
+				var _this = this;
+
+				var $this = $(this),
+				    content = $(this).val();
 
 				if (e.keyCode === 13 && content !== '') {
 					ref.push({
 						'user': userName,
 						'content': content
+					}, function () {
+						$(_this).val('');
 					});
 				}
 			});
