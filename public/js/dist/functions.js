@@ -7,6 +7,8 @@ System.register([], function (_export) {
 
 	_export('tab2spaces', tab2spaces);
 
+	_export('getRoomName', getRoomName);
+
 	function escapeHTML(str) {
 		return $('<div/>').text(str).html();
 	}
@@ -17,6 +19,11 @@ System.register([], function (_export) {
 
 	function tab2spaces(str) {
 		return str.replace(/\t/g, '&nbsp;&nbsp;').replace(/ /g, '&nbsp;');
+	}
+
+	function getRoomName() {
+		var path = location.pathname;
+		return path.split('/')[2];
 	}
 
 	return {

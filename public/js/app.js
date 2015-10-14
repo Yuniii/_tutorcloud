@@ -1,5 +1,5 @@
 System.config({
-    baseURL: './js/dist'
+    baseURL: '/public/js/dist'
 });
 
 System.import('main.js');

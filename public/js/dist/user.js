@@ -18,7 +18,7 @@ System.register(['firebase.js'], function (_export) {
 				UIkit.modal.prompt("輸入姓名：", userName, function (value) {
 					_export('userName', userName = value);
 					sessionStorage.setItem('user_name', userName);
-					setupFirebaseUser();
+					//setupFirebaseUser();
 				}, { labels: { Ok: "確認", Cancel: "離開" } });
 			}userName = sessionStorage.getItem('user_name');
 

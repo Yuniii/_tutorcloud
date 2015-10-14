@@ -5,16 +5,16 @@ var gulp = require('gulp'),
 gulp.task('styles', function() {
 	gulp.src('sass/**/*.sass')
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(gulp.dest('./css/'));
+		.pipe(gulp.dest('./public/css/'));
 });
 
 gulp.task('js', function() {
-	gulp.src('js/src/**/*.js')
+	gulp.src('public/js/src/**/*.js')
 		.pipe(babel({modules: 'system'}))
-		.pipe(gulp.dest('./js/dist/'))
+		.pipe(gulp.dest('./public/js/dist/'))
 })
 
 gulp.task('default', function() {
 	gulp.watch('./sass/**/*.sass', ['styles']);
-	gulp.watch('./js/src/**/*.js', ['js']);
+	gulp.watch('./public/js/src/**/*.js', ['js']);
 });

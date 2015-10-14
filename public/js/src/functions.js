@@ -9,3 +9,8 @@ export function nl2br(str) {
 export function tab2spaces(str) {
 	return str.replace(/\t/g, '&nbsp;&nbsp;').replace(/ /g, '&nbsp;');
 }
+
+export function getRoomName() {
+	var path = location.pathname;
+	return path.split('/')[2];
+}
