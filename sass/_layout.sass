@@ -5,6 +5,8 @@ $navbar-width: 80vw
 
 $side-menu-width: 140px
 
+$tab-height: 37px
+
 $chatroom-width: 320px
 $chat-input-height: 60px
 
@@ -33,9 +35,17 @@ div
 	padding-top: 12px
 	width: $side-menu-width
 
+.main-content
+	flex: 1
+	//height: calc(100vh - #{$navbar-height})
+
+.editor-tab
+	li:first-child
+		margin-left: 29px //gutter width
+
 .editor, .firepad, .CodeMirror
 	flex: 1
-	height: calc(100vh - #{$navbar-height})
+	height: calc(100vh - #{$navbar-height} - #{$tab-height})
 
 // ==========================
 
