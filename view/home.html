@@ -5,6 +5,14 @@
 	<title>首頁</title>
 </head>
 <body>
-	
+	<label for="goto">輸入教室編號：</label><input type="text" id="goto">  <button id="gotoBtn">進入教室</button>
+<script>
+	var btn = document.getElementById('gotoBtn');
+
+	btn.onclick = function () {
+		var room = document.getElementById('goto').value;
+		location.href = location.href + 'classroom/' + room;
+	};
+</script>
 </body>
 </html>
