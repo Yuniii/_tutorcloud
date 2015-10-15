@@ -1,8 +1,14 @@
-System.register(['ui.js', 'firepad.js', 'user.js', 'chat.js'], function (_export) {
+System.register(['user.js', 'firepad.js', 'chat.js', 'editor_tabs.js', 'ui.js'], function (_export) {
   'use strict';
 
+  var applyFirepad;
   return {
-    setters: [function (_uiJs) {}, function (_firepadJs) {}, function (_userJs) {}, function (_chatJs) {}],
-    execute: function () {}
+    setters: [function (_userJs) {}, function (_firepadJs) {
+      applyFirepad = _firepadJs.applyFirepad;
+    }, function (_chatJs) {}, function (_editor_tabsJs) {}, function (_uiJs) {}],
+    execute: function () {
+
+      applyFirepad('Default');
+    }
   };
 });
